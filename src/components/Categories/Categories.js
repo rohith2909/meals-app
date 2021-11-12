@@ -1,0 +1,24 @@
+import React, {useEffect, useContext} from 'react';
+import {myContext} from '../Context/Context';
+import './Categories.css'
+
+const Categories = () => {
+    const { fetchCategories, categories} = useContext(myContext);
+
+useEffect (() => {
+    fetchCategories();
+}, [fetchCategories]);
+
+    return (
+        <div className="categories">
+            {categories.map((category) => (
+               <div className="catdet"key = {category.idCategory}>
+               <img className="catimg" src={category.strCategoryThumb} alt="#"/>
+               <h4>{category.strCategory}</h4>
+               </div>
+               ))}
+        </div>
+    );
+};
+
+export default Categories
